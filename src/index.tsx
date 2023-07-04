@@ -1,15 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App, { CERAMIC_TESTNET_HOST } from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { Us3rAuthWithRainbowkitProvider } from "@us3r-network/auth-with-rainbowkit";
+import { ProfileStateProvider } from "@us3r-network/profile";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Us3rAuthWithRainbowkitProvider
+      projectId={"c652d0148879353d7e965d7f6f361e59"}
+      appName="S3 Dashboard"
+    >
+      <ProfileStateProvider ceramicHost={CERAMIC_TESTNET_HOST}>
+        <App />
+      </ProfileStateProvider>
+    </Us3rAuthWithRainbowkitProvider>
   </React.StrictMode>
 );
 
